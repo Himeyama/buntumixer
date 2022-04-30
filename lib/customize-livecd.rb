@@ -170,17 +170,9 @@ class CustomLiveCD
   end
 
   def umount(dir)
-    if Dir.exist?(dir) && system("mountpoint -q #{dir}")
-      Log.info("マウントを解除しています (#{dir})...")
-      Log.error("マウントの解除に失敗しました。") unless system("umount #{dir}")
-    end
-  end
-end
+    return unless Dir.exist?(dir) && system("mountpoint -q #{dir}")
 
-if $PROGRAM_NAME == __FILE__
-  # my_linux = CustomLiveCD.new
-  # my_linux.src_iso = '/mnt/d/ubuntu-22.04-desktop-amd64.iso'
-  # my_linux.dst_iso = 'hikarilinux-22.04-desktop-amd64.iso'
-  # # my_linux.prep
-  # my_linux.clean
+    Log.info("マウントを解除しています (#{dir})...")
+    Log.error("マウントの解除に失敗しました。") unless system("umount #{dir}")
+  end
 end

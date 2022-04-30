@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'buntumixer/version'
+require_relative "buntumixer/version"
 
 module Buntumixer
   class Error < StandardError; end

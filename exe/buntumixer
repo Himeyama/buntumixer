@@ -1,59 +1,23 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-# require "buntumixer"
+$PROGRAM_NAME =~ %r{/([a-zA-z]+)$}
+prog = Regexp.last_match(1)
 
-require 'optparse'
-require 'log'
-require 'customize-livecd'
-
-params = {}
-ProgramConfig = {}
-opts = OptionParser.new do |opt|
-  opt.on('-s', '--src ISO', 'Live CD イメージファイル (*.iso)') do |v|
-    ProgramConfig[:src] = true
-    params[:src] = v
-  end
-  opt.on('-v', '--v VERSION', 'ディストリビューションのバージョン (例: 22.04)') do |v|
-    ProgramConfig[:version] = true
-    params[:version] = v
-  end
-  opt.on('-n', '--name NAME', 'ディストリビューション名') do |v|
-    ProgramConfig[:name] = true
-    params[:name] = v
-  end
-end
-opts.parse!(ARGV)
-
-if ARGV.empty? || !%w[clear prep].include?(ARGV[0])
-  $PROGRAM_NAME =~ %r{/([a-zA-Z]+)$}
-  prog_name = Regexp.last_match(1)
-  Log.error "コマンドが正しくありません。使用法を表示するには #{prog_name} -h を実行してください。"
-  exit false
+if ARGV.empty?
+  require "buntumixer-help"
+  exit true
+else
+  cmd = ARGV[0]
 end
 
-if ARGV[0] == 'clear'
-  Log.info '作業ディレクトリーを削除しています...'
-  my_linux = CustomLiveCD.new
-  my_linux.clear
-elsif ARGV[0] == 'prep'
-  unless ProgramConfig[:src]
-    Log.error('ISO ファイルが指定されていません')
-    exit false
-  end
-
-  unless ProgramConfig[:version]
-    Log.error('バージョンが指定されていません。')
-    exit false
-  end
-
-  unless ProgramConfig[:name]
-    Log.error('ディストリビューション名が指定されていません。')
-    exit false
-  end
-
-  my_linux = CustomLiveCD.new
-  my_linux.src_iso = params[:src]
-  my_linux.distribution_version = params[:version]
-  my_linux.distribution_name = params[:name]
-  my_linux.prep
+case cmd
+when "help", "h"
+  require "buntumixer-help"
+when "clear", "c"
+  require "buntumixer-clear"
+when "prepare", "prep", "p"
+  require "buntumixer-prepare"
+else
+  puts "#{prog}: #{cmd} コマンドが見つかりません"
 end
