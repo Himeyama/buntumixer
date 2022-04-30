@@ -55,7 +55,7 @@ class CustomLiveCD
     if system("mountpoint -q #{@mount_point}")
       Log.info("既にマウントしています。")
     else
-      Log.error("マウントに失敗しました。") unless system("mount -o loop #{@src_iso} #{@mount_point}")
+      Log.error("マウントに失敗しました。") unless system("mount -o loop #{@src_iso} #{@mount_point} 2>/dev/null")
     end
 
     Log.info("ISO イメージ内のディレクトリーをコピーしています...")
