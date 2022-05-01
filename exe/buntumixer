@@ -14,10 +14,14 @@ end
 case cmd
 when "help", "h"
   require "buntumixer-help"
-when "clear", "c"
+when "clear"
   require "buntumixer-clear"
 when "prepare", "prep", "p"
   require "buntumixer-prepare"
+when "create"
+  require "buntumixer-create"
+when "apply"
+  require "buntumixer-apply"
 else
   puts "#{prog}: #{cmd} コマンドが見つかりません"
 end

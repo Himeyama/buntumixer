@@ -12,11 +12,11 @@ class Log
 
   def self.info(txt)
     time = Time.now.strftime("%F %T")
-    puts green_txt("[ 情報 ] #{time} #{txt}")
+    puts green_txt("#{time} #{txt}")
   end
 
   def self.error(txt)
     time = Time.now.strftime("%F %T")
-    warn red_txt("[エラー] #{time} #{txt}")
+    warn red_txt("#{time} #{txt}")
   end
 end
