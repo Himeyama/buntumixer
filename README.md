@@ -4,14 +4,19 @@
 ## 概要
 Ubuntu の LiveCD をカスタマイズするツール。
 
-## 開発環境
+## 動作環境
 - Windows 11 (WSL2)
-- Linux
+- Ubuntu
 
 ## 依存パッケージのインストール
 ```bash
 sudo apt update
 sudo apt install -y squashfs-tools xorriso cd-boot-images-amd64
+```
+
+## インストール
+```bash
+gem install buntumixer
 ```
 
 ## コマンド
@@ -25,6 +30,7 @@ bundle exec buntumixer using
 ```
 
 ### ISO イメージを展開し作業ディレクトリーを準備
+
 > 例
 
 ```bash
