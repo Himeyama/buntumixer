@@ -15,6 +15,11 @@ opts = OptionParser.new do |opt|
 end
 opts.parse!(ARGV[1..])
 
+if params.empty?
+  puts opts.help
+  exit true
+end
+
 unless prog_conf[:dst]
   Log.error("ISO ファイルの保存先が指定されていません。")
   exit false

@@ -23,6 +23,11 @@ opts = OptionParser.new do |opt|
 end
 opts.parse!(ARGV[1..])
 
+if params.empty?
+  puts opts.help
+  exit true
+end
+
 unless prog_conf[:src]
   Log.error("ISO ファイルが指定されていません。")
   exit false

@@ -13,7 +13,7 @@ opts = OptionParser.new do |opt|
     params[:script] = v
   end
 
-  opt.on("-d", "--dir DIR", "OS イメージのあるディレクトリー (*.sh)") do |v|
+  opt.on("-d", "--dir DIR", "OS イメージのあるディレクトリー") do |v|
     prog_conf[:dir] = true
     params[:dir] = v
   end

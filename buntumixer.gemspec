@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["MURATA Mitsuharu"]
   spec.email = ["hikari.photon+dev@gmail.com"]
 
-  spec.summary = "Ubuntu customization tools"
+  spec.summary = "Ubuntu customization tool"
   spec.description = "This project is developing tools to customize ubuntu"
   spec.homepage = "https://github.com/himeyama/buntumixer"
   spec.license = "MIT"
