@@ -53,4 +53,3 @@ my_linux.src_iso = params[:src]
 my_linux.distribution_version = params[:version]
 my_linux.distribution_name = params[:name]
 my_linux.prep
-p my_linux
