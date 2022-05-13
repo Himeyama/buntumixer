@@ -15,7 +15,6 @@ class CustomLiveCD
     @release_notes_url = ""
     @distribution_name = "Customised Ubuntu"
     @distribution_version = "22.04"
-    @volume_id = "Customised Linux 22.04"
   end
 
   def clear
@@ -199,9 +198,10 @@ class CustomLiveCD
     end
 
     Log.info("ISO を作成しています...")
+    volume_id = "#{@distribution_name} #{@distribution_version}"
     xorriso_cmd = "xorriso " \
       "-as mkisofs " \
-      "-volid \"#{@volume_id}\" " \
+      "-volid \"#{volume_id}\" " \
       "-o #{@dst_iso} " \
       "-J -joliet-long -l " \
       "-b boot/grub/i386-pc/eltorito.img " \
