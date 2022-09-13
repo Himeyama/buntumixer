@@ -10,9 +10,12 @@ Ubuntu の LiveCD をカスタマイズするツール。
 
 ## 依存パッケージのインストール
 ```bash
+sudo add-apt-repository ppa:ubuntu-foundations-team/cd-boot-images
 sudo apt update
 sudo apt install -y squashfs-tools xorriso cd-boot-images-amd64
 ```
+
+上記のパッケージがインストールされているかを必ず確認してください。
 
 ## インストール
 ```bash
